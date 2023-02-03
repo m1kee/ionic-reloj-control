@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      {{ today | date }}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,31 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">{{ today | date }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col sizeXs="12" style="text-align: center;">
+        <ion-label >Comienzo Turno</ion-label>
+        <h1>{{ entry.start | date:'shortTime' }}</h1>
+      </ion-col>
+      <ion-col sizeXs="12" style="text-align: center;">
+        <ion-label>Comienzo Colación</ion-label>
+        <h1>{{ entry.startLunch | date:'shortTime' }}</h1>
+      </ion-col>
+      <ion-col sizeXs="12" style="text-align: center;">
+        <ion-label>Término Colación</ion-label>
+        <h1>{{ entry.endLunch | date:'shortTime' }}</h1>
+      </ion-col>
+      <ion-col sizeXs="12" style="text-align: center;">
+        <ion-label>Término Turno</ion-label>
+        <h1>{{ entry.end | date:'shortTime' }}</h1>
+      </ion-col>
+      <ion-col sizeXs="12">
+        <ion-button expand="block" (click)="onTick()" color="secondary" [disabled]="entryComplete"> Marcar </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
